@@ -22,7 +22,8 @@
       width: 50px;
       border-radius: 25px;
     }
-    .addbutton:hover{ 
+
+    .addbutton:hover {
       background-color: blanchedalmond;
     }
 
@@ -36,15 +37,18 @@
       display: none;
 
     }
-    .head1{ 
+
+    .head1 {
       margin-top: 50px;
-     color: red;
-     margin-bottom: 50px;
+      color: red;
+      margin-bottom: 50px;
     }
-  .para1{ 
-    margin-top: 55px;
-    align-content: center;
-  }
+
+    .para1 {
+      margin-top: 55px;
+      align-content: center;
+    }
+
     #refre {
       margin-top: 3000px;
     }
@@ -54,17 +58,19 @@
     }
 
     table {
-     margin-right: 50px;
-     margin-left: 70px;;
+      margin-right: 50px;
+      margin-left: 70px;
+      ;
       width: 75%;
     }
-    
-    th, td {
+
+    th,
+    td {
       padding: 8px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
-    
+
     th {
       background-color: #f2f2f2;
     }
@@ -110,38 +116,46 @@
     <form name="add" id="refre">
       <h2>New User Form</h2>
       <label id="moni">Name </label>
-      <input type="text" name="name" placeholder="Name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;"> <br>
+      <input type="text" name="name" placeholder="Name"
+        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;">
+      <br>
       <label>email</label>
-      <input type="email" name="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;"> <br>
+      <input type="email" name="email"
+        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;">
+      <br>
       <label>phnno</label>
-      <input type="tel" name="telephone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;"> <br>
+      <input type="tel" name="telephone"
+        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;">
+      <br>
     </form>
-    
 
-    <button onclick="addition()" style="background-color: #4CAF50; color: #fff; border: none; cursor: pointer; width: 100%; padding: 10px; border-radius: 3px; margin-bottom: 10px;">submit</button>
 
-    <a href="#table"><button onclick="disappear()" style="background-color: #4CAF50; color: #fff; border: none; cursor: pointer; width: 100%; padding: 10px; border-radius: 3px;">back</button></a>
+    <button onclick="addition()"
+      style="background-color: #4CAF50; color: #fff; border: none; cursor: pointer; width: 100%; padding: 10px; border-radius: 3px; margin-bottom: 10px;">submit</button>
+
+    <a href="#table"><button onclick="disappear()"
+        style="background-color: #4CAF50; color: #fff; border: none; cursor: pointer; width: 100%; padding: 10px; border-radius: 3px;">back</button></a>
   </div>
   </body>
   </htmi>
 </center>
 
 <center>
-<div id="userDetails"> 
-  <p><strong>Kindly check the details carefully
-  </strong>
-  </p>
-  <label style="color: red;"> Your name : </label>
-  <div style="display: inline-block" id="userName"></div>
-<br>
-<label style="color: red;"> Mail id : </label>
-  <div  style="display: inline-block" id="userEmail"></div>
-<br>
-<label style="color: red;"> phone no : </label>
-  <div style="display: inline-block"  id="userPhNum"></div><br>
-  <br> 
-  <button onclick="backToMainPage()" style="color:black; background-color: #4CAF50;">Back to home page</button>
-</div>
+  <div id="userDetails">
+    <p><strong>Kindly check the details carefully
+      </strong>
+    </p>
+    <label style="color: red;"> Your name : </label>
+    <div style="display: inline-block" id="userName"></div>
+    <br>
+    <label style="color: red;"> Mail id : </label>
+    <div style="display: inline-block" id="userEmail"></div>
+    <br>
+    <label style="color: red;"> phone no : </label>
+    <div style="display: inline-block" id="userPhNum"></div><br>
+    <br>
+    <button onclick="backToMainPage()" style="color:black; background-color: #4CAF50;">Back to home page</button>
+  </div>
 </center>
 <div>
 
@@ -225,7 +239,7 @@
       //cell4.innerHTML = cell4.innerHTML + "Cols: <iput type='text' id='colsTextArea' maxlength='3' /><br>Rows: <input type='text' id='rowsTextArea' maxlength='2' /><br><button type='button' onclick='updateTextArea('" + element.id + "')' >Add</button><br>";
     }
 
-    function backToMainPage(){
+    function backToMainPage() {
       var backToPage = document.getElementById("userDetails");
       backToPage.style.display = "none";
       document.getElementsByClassName("empTable").table.style.display = "inline-block";
@@ -272,35 +286,17 @@
     }
 
     function disappear() {
-      // Two places to customize:
-
-      // Specify the id of the form.
       var IDofForm = "refre";
 
-      // Specify the id of the div containing the form.
+
       var IDofDivWithForm = "displayed";
 
-      // This line submits the form. (If Ajax processed, call Ajax function, instead.)
+
       document.getElementById(IDofForm).submit();
 
-      // This line collapses the form.
+
       document.getElementById(IDofDivWithForm).style.display = "none";
     }
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </script>
 
   </body>
