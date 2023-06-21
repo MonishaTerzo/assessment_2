@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    tr:hover {
+      background-color: antiquewhite;
+    }
+
+    #del {
+      cursor: pointer;
+
+    }
+
+    .addbutton {
+      background-color: green;
+      padding-left: 30px;
+      padding-right: 50px;
+      padding-top: 20px;
+      padding-bottom: 40px;
+      height: 20px;
+      width: 50px;
+      border-radius: 25px;
+    }
+    .addbutton:hover{ 
+      background-color: blanchedalmond;
+    }
+
+    #displayed {
+      margin-top: 300px;
+      padding-bottom: 1000px;
+      position: absolute;
+      top: 0;
+      margin-left: 270px;
+      margin-right: 270px;
+      display: none;
+
+    }
+    .head1{ 
+      margin-top: 50px;
+     color: red;
+     margin-bottom: 50px;
+    }
+  .para1{ 
+    margin-top: 55px;
+    align-content: center;
+  }
+    #refre {
+      margin-top: 3000px;
+    }
+
+    #userDetails {
+      display: none;
+    }
+
+    table {
+     margin-right: 50px;
+     margin-left: 70px;;
+      width: 75%;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<center>
+  <p class="para1">click add button to add employee details</p>
+  <a href="#moni"><button id="monisha" onclick="display()" class="addbutton">add</button>
+  </a>
+
+  <body>
+    <table id="table" class="empTable">
+      <h2 class="head1">Employee Details </h2>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile_number</th>
+      </thead>
+      </tr>
+      <tbody>
+        <tr onclick="details('one')" id="one">
+          <td>monisha</td>
+          <td>monisha@gmail.com</td>
+          <td>79879878686</td>
+          <td><input id="del" type="button" value="Delete" onclick="deleteRow(this)"></td>
+        </tr>
+        <tr onclick="details('two')" id="two">
+          <td>albert</td>
+          <td>albert@gmail.com</td>
+          <td>7688969869</td>
+          <td><input type="button" id="del" value="Delete" onclick="deleteRow(this)"></td>
+        </tr>
+      </tbody>
+
+
+
+    </table>
+</center>
+<center>
+  <div id="displayed">
+    <form name="add" id="refre">
+      <h2>New User Form</h2>
+      <label id="moni">Name </label>
+      <input type="text" name="name" placeholder="Name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;"> <br>
+      <label>email</label>
+      <input type="email" name="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;"> <br>
+      <label>phnno</label>
+      <input type="tel" name="telephone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 20px; box-sizing: border-box;"> <br>
+    </form>
+    
+
+    <button onclick="addition()" style="background-color: #4CAF50; color: #fff; border: none; cursor: pointer; width: 100%; padding: 10px; border-radius: 3px; margin-bottom: 10px;">submit</button>
+
+    <a href="#table"><button onclick="disappear()" style="background-color: #4CAF50; color: #fff; border: none; cursor: pointer; width: 100%; padding: 10px; border-radius: 3px;">back</button></a>
+  </div>
+  </body>
+  </htmi>
+</center>
+
+<center>
+<div id="userDetails"> 
+  <p><strong>Kindly check the details carefully
+  </strong>
+  </p>
+  <label style="color: red;"> Your name : </label>
+  <div style="display: inline-block" id="userName"></div>
+<br>
+<label style="color: red;"> Mail id : </label>
+  <div  style="display: inline-block" id="userEmail"></div>
+<br>
+<label style="color: red;"> phone no : </label>
+  <div style="display: inline-block"  id="userPhNum"></div><br>
+  <br> 
+  <button onclick="backToMainPage()" style="color:black; background-color: #4CAF50;">Back to home page</button>
+</div>
+</center>
+<div>
+
+  <div id="1"></div>
+  <div id="2"></div>
+  <div id="3"></div>
+  <script>
+    function deleteRow(r) {
+      var i = r.parentNode.parentNode.rowIndex;
+      document.getElementById("table").deleteRow(i);
+
+
+    }
+    function validate() {
+      var name = document.add.name.value;
+      var phoneno = document.add.telephone.value;
+      var email = document.add.email.value;
+
+      if (name == "") {
+        alert("pls enter the username");
+        return false;
+      } else if (phoneno.length != 10) {
+        alert("phone no should conatains only number and should have length of 10");
+        return false;
+      }
+    }
+
+    function deleteRow(r) {
+      var i = r.parentNode.parentNode.rowIndex;
+      document.getElementById("table").deleteRow(i);
+    }
+
+
+    function addition() {
+      var name = document.add.name.value;
+      if (name == "") {
+        alert("pls enter the username");
+        return false;
+      }
+      console.log(name);
+      var email = document.add.email.value;
+
+      if (name == "") {
+        alert("pls enter the email");
+        return false;
+      }
+      var phnno = document.add.telephone.value;
+      if (phnno.length != 10) {
+        alert("phone no should conatains only number and should have length of 10");
+        return false;
+      }
+
+      var ta = document.getElementById("table");
+      var row = ta.insertRow(1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      row.setAttribute('id', name);
+      row.setAttribute("onclick", `details('${name}')`);
+      cell1.innerHTML = name;
+      cell2.innerHTML = email;
+      cell3.innerHTML = phnno;
+      // let button = document.createElement('button');
+      // button.innerText = "Delete";
+      // button.setAttribute('onClick', 'deleteRow()')
+      // button.style.color="grey";
+      // cell4.innerHTML= button;
+      var btn = document.createElement("button");
+      var td = document.createElement("td");
+      var btn = document.createElement("button");
+      btn.style.backgroundColor = "grey";
+      btn.style.borderRadius = "5px";
+      btn.style.padding = "10px";
+      btn.textContent = "Delete";
+      btn.setAttribute('onClick', 'deleteRow()')
+      td.appendChild(btn);
+
+      cell4.appendChild(btn);
+      document.getElementById("refre").reset();
+      //cell4.innerHTML = cell4.innerHTML + "Cols: <iput type='text' id='colsTextArea' maxlength='3' /><br>Rows: <input type='text' id='rowsTextArea' maxlength='2' /><br><button type='button' onclick='updateTextArea('" + element.id + "')' >Add</button><br>";
+    }
+
+    function backToMainPage(){
+      var backToPage = document.getElementById("userDetails");
+      backToPage.style.display = "none";
+      document.getElementsByClassName("empTable").table.style.display = "inline-block";
+    }
+
+    function display() {
+      var x = document.getElementById("displayed");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      }
+      else {
+        x.style.display = "none";
+      }
+    }
+    function details(id) {
+      // var table = document.getElementById("table");
+      // var rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+      // for (var i = 0; i < rows.length; i++) {
+      //   rows[i].addEventListener("click", displayRowElements);
+      // }
+
+      // function displayRowElements() {
+      //   var cells = this.getElementsByTagName("td");
+
+      //   for (var j = 0; j < 4; j++) {
+      //     document.getElementById("1").innerHTML = cells[j].textContent;
+
+      //   }
+      // }
+
+      document.getElementsByClassName("empTable").table.style.display = "none";
+      var userDetailsView = document.getElementById("userDetails");
+      userDetailsView.style.display = "block";
+      var userName = document.getElementById("userName");
+      userName.innerHTML = document.getElementById(id).childNodes[1].innerText;
+
+
+      var email = document.getElementById("userEmail");
+      email.innerHTML = document.getElementById(id).childNodes[3].innerText;
+
+
+      var phNo = document.getElementById("userPhNum");
+      phNo.innerHTML = document.getElementById(id).childNodes[5].innerText;
+    }
+
+    function disappear() {
+      // Two places to customize:
+
+      // Specify the id of the form.
+      var IDofForm = "refre";
+
+      // Specify the id of the div containing the form.
+      var IDofDivWithForm = "displayed";
+
+      // This line submits the form. (If Ajax processed, call Ajax function, instead.)
+      document.getElementById(IDofForm).submit();
+
+      // This line collapses the form.
+      document.getElementById(IDofDivWithForm).style.display = "none";
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+  </body>
+
+</html>
