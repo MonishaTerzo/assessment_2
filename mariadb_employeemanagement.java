@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
                 //.........................exercise-1...............................................
 
 //
-            System.out.print("Employees whose name starts with d are  : ");
+            System.out.print("1.Employees whose name starts with d are  : ");
                employees.stream()
                        .filter(employee -> employee.getName().startsWith("d"))
                       .forEach(employee -> System.out.println(employee.getName()));
@@ -53,7 +53,7 @@ import java.util.stream.Collectors;
 //
 //
 //
-                System.out.println(" Below candidates kindly update the mobile number : ");
+                System.out.println("2. Below candidates kindly update the mobile number : ");
                 employees.stream()
                         .filter(employee -> employee.getPhone()==null)
                         .forEach(employee -> System.out.println(employee.getName()));
@@ -61,14 +61,14 @@ import java.util.stream.Collectors;
 //
 //                //,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Exercise-3...................................
 
-                System.out.println(" List of employees in QA with salary greater than 10000 : ");
+                System.out.println(" 3.List of employees in QA with salary greater than 10000 : ");
 
                               employees.stream().filter(employee->Integer.valueOf(employee.getSalary())>10000 && employee.getDepartment().equals("QA")).forEach((employee -> System.out.println(employee.getName())));
 
 
 //
 //                  //...................................Exercise-4...........................................
-                System.out.println("employees in IT department");
+                System.out.println("4.employees in IT department");
 
 
                 employees.stream().filter(employee->(employee.getDepartment().equals("IT"))).forEach((employee -> System.out.println(employee.getName())));
@@ -78,7 +78,7 @@ import java.util.stream.Collectors;
 //
 //                //........................................Exercise-5...............................................
 
-                System.out.println("List of employees applicable for salary increment");
+                System.out.println("5.List of employees applicable for salary increment");
                 employees.stream()
                         .filter(employee -> employee.getDepartment().equals("DEV"))
                         .map(employee -> {
@@ -97,7 +97,7 @@ import java.util.stream.Collectors;
 
 
                 //...................................Exercise-6......................................
-                System.out.println("employees join between months feb and april in the year of 2021");
+                System.out.println("6.employees join between months feb and april in the year of 2021");
 
                 LocalDate startDate = LocalDate.of(2021, 2, 1);
                 LocalDate endDate = LocalDate.of(2021, 4, 1);
@@ -116,7 +116,7 @@ import java.util.stream.Collectors;
 
 
              //   ..............................Exercisen 7............................
-
+                System.out.println();
 
 //                Double lowestSalary = employees.stream()
 //                        .map(Employee::getSalary)
@@ -131,7 +131,7 @@ import java.util.stream.Collectors;
                                 .min(Double::compare);
 
                 if (lowestSalary.isPresent()) {
-                    System.out.println("Lowest Salary of the employee is : " + lowestSalary.get());
+                    System.out.println("7.Lowest Salary of the employee is : " + lowestSalary.get());
                 } else {
                     System.out.println("No employees found.");
                 }
@@ -152,7 +152,7 @@ import java.util.stream.Collectors;
                         .sorted(Comparator.comparing(Employee::getJoiningDate).reversed())
                         .limit(3)
                         .forEach(employee -> {
-                            System.out.println("Name: " + employee.getName());
+                            System.out.println(" 8.Name: " + employee.getName());
                             System.out.println("Joining Date: " + employee.getJoiningDate());
                             System.out.println("-------------------------");
                         });
@@ -162,6 +162,7 @@ import java.util.stream.Collectors;
 //                //,......................Exercise-9...................................
 //
 //
+                System.out.println();
 
                         LocalDate startDated= LocalDate.of(2021, 2, 1);
                 LocalDate endDated  = LocalDate.of(2021, 2, 28);
@@ -175,13 +176,14 @@ import java.util.stream.Collectors;
                         .mapToDouble(Double::parseDouble)
                         .sum();
 
-                System.out.println("Total Sum of Salaries of the persons joined in Feb 2021 is  " + sums);
+                System.out.println("9.Total Sum of Salaries of the persons joined in Feb 2021 is  " + sums);
 
 
 
 //                //..................exercise-10..................
 //
 //
+                System.out.println();
                         LocalDate joiningDate = LocalDate.of(2021, 3, 14);
 
                 OptionalDouble averageSalary = employees.stream()
@@ -191,7 +193,7 @@ import java.util.stream.Collectors;
                         .average();
 
                 if (averageSalary.isPresent()) {
-                    System.out.println("Average Salary for employees joined on 14 th march 2021 " + averageSalary.getAsDouble());
+                    System.out.println("10.Average Salary for employees joined on 14 th march 2021 " + averageSalary.getAsDouble());
                 }
 
 //
@@ -199,21 +201,21 @@ import java.util.stream.Collectors;
 //                //........................Exercise-11...............................
 //
 //
-
+                System.out.println();
                 Map<String, Long> salaryCountMap = employees.stream()
                         .collect(Collectors.groupingBy(Employee::getSalary, Collectors.counting()));
 
-                System.out.println("Salary Count Map: " + salaryCountMap);
+                System.out.println("11.Salary Count Map: " + salaryCountMap);
 
 //
 //
 //                //........................Exercise-12...........................
 //
-
+                System.out.println();
                 Map<String, List<Employee>> employeesByDepartment = employees.stream()
                         .collect(Collectors.groupingBy(Employee::getDepartment));
 
-                System.out.println("Employees by Department: " + employeesByDepartment);
+                System.out.println("12.Employees by Department: " + employeesByDepartment);
 
 //
 //                //.......................Exercise-13................................
@@ -222,15 +224,17 @@ import java.util.stream.Collectors;
 //
 //
 //
+                System.out.println();
                 Map<String, Double> departmentSalaryMap = employees.stream()
                         .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(employee -> Double.parseDouble(employee.getSalary()))));
 
-                System.out.println("Department Salary Map: " + departmentSalaryMap);
+                System.out.println("13.Department Salary Map: " + departmentSalaryMap);
 
 //
 //                //.......................Exercise 14..........................................
+                System.out.println();
 //
-                        List<String> categories = Arrays.asList("QA", "IT", "Dev", "Manager");
+                        List<String> categories = Arrays.asList("QA", "IT", "DEV", "Manager");
 
                 Map<String, Double> highestPaidByCategory = new HashMap<>();
 
@@ -243,7 +247,16 @@ import java.util.stream.Collectors;
                     highestPaidSalary.ifPresent(salary -> highestPaidByCategory.put(category, salary));
                 }
 
-                System.out.println("Highest Paid Salary by Category: " + highestPaidByCategory);
+                System.out.println("14.Highest Paid Salary by Category: " + highestPaidByCategory);
+
+                //.................Exercise-15.....................
+                System.out.println();
+
+                Map<String, Long> salaryCoun = employees.stream()
+                        .collect(Collectors.groupingBy(Employee::getSalary, Collectors.counting()));
+
+                System.out.println("15.Salary Count Map is " + salaryCoun);
+
 
                 connection.close();
             } catch (ClassNotFoundException e) {
