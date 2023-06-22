@@ -138,7 +138,7 @@ import java.util.stream.Collectors;
 
 
                 //.........................Exercise 8................................
-
+//
 //                LocalDate joiningDate = LocalDate.of(2021, 3, 14);
 //                    double salary=0;
 //                double sumOfSalaries = employees.stream()
@@ -146,16 +146,16 @@ import java.util.stream.Collectors;
 //                        .forEach(employee->salary+Integer.valueOf(employee.getSalary())
 //                                return salary;
 //                        );
-//
+
 //                System.out.println("Total Sum of Salaries: " + sumOfSalaries);
-//                employees.stream()
-//                        .sorted(Comparator.comparing(Employee::getJoiningDate).reversed())
-//                        .limit(3)
-//                        .forEach(employee -> {
-//                            System.out.println("Name: " + employee.getName());
-//                            System.out.println("Joining Date: " + employee.getJoiningDate());
-//                            System.out.println("-------------------------");
-//                        });
+                employees.stream()
+                        .sorted(Comparator.comparing(Employee::getJoiningDate).reversed())
+                        .limit(3)
+                        .forEach(employee -> {
+                            System.out.println("Name: " + employee.getName());
+                            System.out.println("Joining Date: " + employee.getJoiningDate());
+                            System.out.println("-------------------------");
+                        });
 ////
 //
 //
