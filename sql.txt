@@ -1,0 +1,94 @@
+create table employees(id int primary key AUTO_increment,firstname varchar(20) not null,lastname varchar(20) not null,hiredate date,jobtitle varchar(20),deptid int ,salaryid int,dob date,foreign key(deptid) references department(deptid));
+create table department (deptid int primary key,dept varchar(255) not null,vacancies int);
+create table address (id int primary key,living_city varchar(50),landmark varchar(40),pincode varchar(20),native_place varchar(30));
+create table salary(id int primary key,amount int,tax int,insuramnce int,start_date date,end_date date);
+create table leave_taken (id int primary key,totaldays int,from_date date,to_date date ,performace_star int);
+select * from employees;
+alter table employees drop column salaryid;
+alter table salary add column no_of_family_memebers int;
+alter table employees add column manager_id int;
+
+select * from employees;
+select * from department;
+select * from address;
+select * from salary;
+drop table leave_taken ;
+create table leave_taken (leae_id int primary key,totaldays int,from_date date,to_date date ,reason varchar(100),no_of_days_leave_taken int,performace_star int);
+select * from leave_taken;
+alter table leave_taken add column id int;
+select * from leave_taken;
+
+#--------------exercise-1-----------------
+select e.lastname as name ,max(s.amount) as highest_salary from employees e inner join salary s on e.id=s.id;
+
+#----------------exercise-2----------------------------
+select e.lastname as name ,(s.amount) as salary from employees e inner join salary s on e.id=s.id && s.amount>(select avg(amount) from salary);
+
+#---------------------exercise-3---------------------------
+select lastname,jobtitle as managers from employees  where jobtitle like '%manager%';
+
+#-----------------------exercise-4-----------------------
+select lastname,jobtitle as not_managers from employees  where not  jobtitle like '%manager%';
+
+#------------------------exercise-5-----------------------
+select e.lastname,c.living_city  from employees as e inner join address as c on e.id=c.id where c.living_city like 'chennai';
+
+#-------------------------exercise-6-----------------------
+
+select e.lastname,e.jobtitle,d.dept from employees e inner join department d on e.deptid = d.deptid  where dept  like 'software engineer';
+
+
+#----------------------exercise-7----------------------
+select e.lastname as name,e.jobtitle  as jobtitle ,m.lastname as manager_name ,m.jobtitle as manager_position from employees e ,employees m where e.manager_id=m.id;
+
+
+
+#-----------------------------exercise 8-------------------------
+
+select e.lastname as name, e.jobtitle, d.dept as d from employees e inner join department d on e.deptid = d.deptid  order by dept desc;
+
+
+#-----------------------------exercise-9-----------------------------
+select lastname,jobtitle from employees where hiredate between '2023-10-01' and '2023-10-30';
+
+
+#------------------------------exercise-10-----------------------
+
+
+select e.lastname as name ,(12*s.amount) as yearly_salary from employees e inner join salary s on e.id=s.id && (12*s.amount)>(400000);
+
+#------------------------------exercisse -11-----------------------
+
+select e.lastname as name ,d.dept as separtment  ,s.amount  from employees e  inner join department d  on e.deptid=d.deptid  join  salary s  on s.id=e.id;
+
+
+
+#-------------------exercise-12----------------------------------
+SELECT e.id as id , e.lastname as name ,l.performace_star as performance_star FROM employees e inner JOIN leave_taken l ON e.id = l.id WHERE DATEDIFF(l.to_date, l.from_date) >= 10;
+
+
+#-------------------exercise 13------------------------------------
+
+select employees.lastname, department.dept,(DATEDIFF('2023-06-23' ,  employees.hiredate)- (5*DATEDIFF('2023-06-23', employees.hiredate)/30) - DATEDIFF( leave_taken.to_date, leave_taken.from_date)) as Attendance   from employees inner join department on employees.deptid = department.deptid inner join leave_taken on employees.id = leave_taken.id inner join salary on salary.id = employees.id where department.dept like 'sales';
+
+
+#----------------------exercise 14---------------
+select employees.lastname, (12*salary.amount) from employees  inner join salary on employees.id = salary.id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
