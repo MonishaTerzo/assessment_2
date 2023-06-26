@@ -43,6 +43,7 @@ public class Main {
 
 
     public static void  addemployee(){
+        transaction(); 
         department d = new department();
         d.setId(1);
         d.setName("engineering");
@@ -65,7 +66,7 @@ public class Main {
 
 
         transaction.commit();
-        transaction = session.beginTransaction();
+      
     }
 
 
